@@ -1,11 +1,11 @@
-// {
-//   "name": "servidor",
-//   "version": "1.0.0",
-//   "description": "",
-//   "main": "index.js",
-//   "engines": {
-//     "node": "16.13.1"
-//   },
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "16.13.1"
+  },
 //   "scripts": {
 //     "dev": "react-scripts start",
 //     "start": "serve -s build",
