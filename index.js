@@ -70,9 +70,9 @@ io.on('connection',(socket)=>{
     })
  
 
-    setTimeout(function(){  
-         port.write('si')     
-        },10000);
+    // setTimeout(function(){  
+    //      port.write('si')     
+    //     },10000);
     
     
     //Enviar datos al cliente 
