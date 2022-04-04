@@ -6,32 +6,32 @@ const cors= require('cors')
 const app=express()
 const {Server, Socket}=require('socket.io')
 
-const fs=require('fs')
-const archivo='../archivo.txt'
-const datos='datos.txt'
+// const fs=require('fs')
+// const archivo='../archivo.txt'
+// const datos='datos.txt'
 
-const conectarDB=require('./config/db')
+// const conectarDB=require('./config/db')
 
-//Conectar a la base de datos
-conectarDB();
+// //Conectar a la base de datos
+// conectarDB();
 
-//Habilitar express.json
-app.use(express.json({extended:true}))
+// //Habilitar express.json
+// app.use(express.json({extended:true}))
 
-//Habiliar cors
-app.use(cors());
+// //Habiliar cors
+// app.use(cors());
 
-app.use('/api/usuarios',require('./routes/usuarios'))
-app.use('/api/auth',require('./routes/auth'))
+// app.use('/api/usuarios',require('./routes/usuarios'))
+// app.use('/api/auth',require('./routes/auth'))
 
-//Configuracion del puerto serial
-const Serialport = require('serialport');
-const { disconnect } = require('process')
-const nodemon = require('nodemon')
-const Realine = Serialport.parsers.Readline
+// //Configuracion del puerto serial
+// const Serialport = require('serialport');
+// const { disconnect } = require('process')
+// const nodemon = require('nodemon')
+// const Realine = Serialport.parsers.Readline
 
 
-const server=http.createServer(app)
+// const server=http.createServer(app)
 
 // //Puerto de la app
 // const io=new Server(server,{
