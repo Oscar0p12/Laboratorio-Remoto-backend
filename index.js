@@ -33,81 +33,81 @@ const Realine = Serialport.parsers.Readline
 
 const server=http.createServer(app)
 
-//Puerto de la app
-const io=new Server(server,{
-    cors:{
-        origin:'http://localhost:3000',
-        methods:['GET','POST'],
-    }, 
-})
+// //Puerto de la app
+// const io=new Server(server,{
+//     cors:{
+//         origin:'http://localhost:3000',
+//         methods:['GET','POST'],
+//     }, 
+// })
 
-//Crear puerto serial
-const port = new Serialport('COM3',{
-    baudRate:9600,
-    autoOpen:false
-    })
+// //Crear puerto serial
+// const port = new Serialport('COM3',{
+//     baudRate:9600,
+//     autoOpen:false
+//     })
     
 
-const parser= port.pipe(new Realine({ delimeter:'\r\n'}))
+// const parser= port.pipe(new Realine({ delimeter:'\r\n'}))
 
-io.on('connection',(socket)=>{ 
+// io.on('connection',(socket)=>{ 
     
-    //Ejetucar matlab
-    // var exec = require('child_process').exec;
-    // exec("matlab -nodesktop -r run('pruebap1.m')", function (error, stdOut, stdErr) {
-    // });
+//     //Ejetucar matlab
+//     // var exec = require('child_process').exec;
+//     // exec("matlab -nodesktop -r run('pruebap1.m')", function (error, stdOut, stdErr) {
+//     // });
 
-    //Abrir puerto
-    port.open(null) 
+//     //Abrir puerto
+//     port.open(null) 
 
-    console.log(socket.id)   
+//     console.log(socket.id)   
     
  
-    socket.on('mensaje',(dato1)=>{
-        console.log(dato1[0])
+//     socket.on('mensaje',(dato1)=>{
+//         console.log(dato1[0])
      
-        fs.writeFileSync(datos,dato1[0]+','+dato1[1]+','+dato1[2])
-    })
+//         fs.writeFileSync(datos,dato1[0]+','+dato1[1]+','+dato1[2])
+//     })
  
 
-    setTimeout(function(){  
-         port.write('si')     
-        },10000);
+//     setTimeout(function(){  
+//          port.write('si')     
+//         },10000);
     
     
-    //Enviar datos al cliente 
-    parser.on('data',function(data){
-    //  console.log(parseInt(data,10));
-        socket.emit('datos',{value:data}) 
-        fs.writeFileSync(archivo,'si')   
+//     //Enviar datos al cliente 
+//     parser.on('data',function(data){
+//     //  console.log(parseInt(data,10));
+//         socket.emit('datos',{value:data}) 
+//         fs.writeFileSync(archivo,'si')   
 
-    })
+//     })
 
-    //Desonectar del cliente
-    socket.on('disconnect',()=>{
-        console.log('user disconnected',socket.id)
-        port.close(socket.disconnect?null: error => {})
-    })
+//     //Desonectar del cliente
+//     socket.on('disconnect',()=>{
+//         console.log('user disconnected',socket.id)
+//         port.close(socket.disconnect?null: error => {})
+//     })
 
-})
+// })
 
 
-server.listen(3001,()=>{
-    console.log('servidor')
-})
+// server.listen(3001,()=>{
+//     console.log('servidor')
+// })
 
-parser.on('open',function(){
-    console.log('conectado')
-})
+// parser.on('open',function(){
+//     console.log('conectado')
+// })
 
-parser.on('data', function(data){
-    console.log(parseInt(data))
+// parser.on('data', function(data){
+//     console.log(parseInt(data))
     
-})
+// })
 
-port.on('error',function(err){
-    console.log(err)
-})
+// port.on('error',function(err){
+//     console.log(err)
+// })
 
 
 // parser.on('mensaje',(dato1,dato2,dato3)=>{
